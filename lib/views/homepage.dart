@@ -15,7 +15,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late WeatherData weatherInfo;
+  WeatherData? weatherInfo;
+  bool isLoading = true;
+  String errorMessage = "";
+
+  // late WeatherData weatherInfo;
   myWeather(){
     WeatherService().fetchWeather().then((value){
       setState(() {
@@ -33,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   }
   @override
   Widget build(BuildContext context) {
+
      var srcheight = MediaQuery.of(context).size.height;
     return Scaffold(
       body:SingleChildScrollView(
@@ -47,42 +52,43 @@ class _HomePageState extends State<HomePage> {
               height: Get.height*1,
             ),
             Center(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: Get.height*0.1),
-                    child: Text('Mullana',
-                      style: GoogleFonts.playfairDisplay(
-                          fontSize: Get.height*0.055,
-                        color: Colors.white
-                    ),),
-        
-                  ),
-                  Text('19',
-                    style: GoogleFonts.cinzel(
-                      // fontWeight: FontWeight.normal,
-                        fontSize: Get.height*0.09,
-                      color: Colors.white
-                  ),),
-                  Text('Mostly Clear',
-                    style: GoogleFonts.dmSans(
-                      fontWeight: FontWeight.w700,
-                        fontSize: Get.height*0.02,
-                      color: Colors.grey
-                  ),),
-        Text('H: 24 L:18',
-          style: GoogleFonts.allerta(
-              fontSize: Get.height*0.028,
-              color: Colors.white
-          ),),
-                  Padding(
-                    padding: EdgeInsets.only(top: Get.height*0.13),
-                    child: Image.asset('assets/images/House 4 3.png',),
-                  ),
-
-                ],
-        
-              ),
+              child: WeatherDetail(weather: weatherInfo!),
+        //       child: Column(
+        //         children: [
+        //           Padding(
+        //             padding: EdgeInsets.only(top: Get.height*0.1),
+        //             child: Text('Mullana',
+        //               style: GoogleFonts.playfairDisplay(
+        //                   fontSize: Get.height*0.055,
+        //                 color: Colors.white
+        //             ),),
+        //
+        //           ),
+        //           Text('19',
+        //             style: GoogleFonts.cinzel(
+        //               // fontWeight: FontWeight.normal,
+        //                 fontSize: Get.height*0.09,
+        //               color: Colors.white
+        //           ),),
+        //           Text('Mostly Clear',
+        //             style: GoogleFonts.dmSans(
+        //               fontWeight: FontWeight.w700,
+        //                 fontSize: Get.height*0.02,
+        //               color: Colors.grey
+        //           ),),
+        // Text('H: 24 L:18',
+        //   style: GoogleFonts.allerta(
+        //       fontSize: Get.height*0.028,
+        //       color: Colors.white
+        //   ),),
+        //           Padding(
+        //             padding: EdgeInsets.only(top: Get.height*0.13),
+        //             child: Image.asset('assets/images/House 4 3.png',),
+        //           ),
+        //
+        //         ],
+        //
+        //       ),
             ),
             // DraggableScrollableSheet(
             //
@@ -91,6 +97,52 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+
+class WeatherDetail extends StatelessWidget {
+  final WeatherData weather;
+  const WeatherDetail({super.key, required this.weather});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: Get.height*0.1),
+          child: Text(weather.name,
+            style: GoogleFonts.playfairDisplay(
+                fontSize: Get.height*0.055,
+                color: Colors.white
+            ),),
+
+        ),
+        Text("19",//${weather.temperature.current.toStringAsFixed(2)}°C
+          style: GoogleFonts.cinzel(
+            // fontWeight: FontWeight.normal,
+              fontSize: Get.height*0.09,
+              color: Colors.white
+          ),),
+        Text('Mostly Clear',
+          style: GoogleFonts.dmSans(
+              fontWeight: FontWeight.w700,
+              fontSize: Get.height*0.02,
+              color: Colors.grey
+          ),),
+        Text('H: 24 L:18',
+          style: GoogleFonts.allerta(
+              fontSize: Get.height*0.028,
+              color: Colors.white
+          ),),
+        Padding(
+          padding: EdgeInsets.only(top: Get.height*0.13),
+          child: Image.asset('assets/images/House 4 3.png',),
+        ),
+
+      ],
+
     );
   }
 }
