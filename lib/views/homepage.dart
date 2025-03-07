@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -90,11 +91,56 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           Positioned(
-            left: -2,
-              bottom: -10,
+            // left: -2,
+            right: 0,
+              bottom: -5,
               // left: -90,
+              // height: Get.height*0.,
               width: Get.width*1,
-              child: Image.asset('assets/images/bottomnavbar.png',)),
+              child: Stack(
+                children: [
+                  Container(
+                      child: Image.asset('assets/images/bottomnavbar.png',fit: BoxFit.cover,)),
+                  Positioned(
+                    left: 20,
+                    bottom: 20,
+                    child: IconButton(onPressed: (){}, icon: Icon(CupertinoIcons.location_solid,color: Colors.white,size: Get.width*0.1,)
+                    ),
+                  ),
+                  Positioned(
+                    right: 20,
+                    bottom: 20,
+                    child: IconButton(onPressed: (){}, icon: Icon(CupertinoIcons.list_bullet,color: Colors.white,size: Get.width*0.1,)
+                    ),
+                  ),
+                  Positioned(
+                    right: Get.width*0.42,
+                    bottom: 22,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Color.fromRGBO(53,57,105,1),width: 4),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.2),
+                            blurRadius: 10,
+                            spreadRadius: 0.1,
+                            offset: Offset(-4, -5)
+                          )
+                        ]
+                      ),
+                      child: CircleAvatar(
+                        radius: 30,
+
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                            onPressed: (){}, icon: Icon(CupertinoIcons.add,color:Colors.deepPurple ,size: Get.width*0.06,)
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )),
           // Center(
           //   // child: isLoading
           //   //     ? const CircularProgressIndicator(color: Colors.white) // Loading indicator
