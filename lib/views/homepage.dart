@@ -90,9 +90,10 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           Positioned(
-              bottom: 0,
+              bottom: -10,
+              // left: -90,
               width: Get.width*1,
-              child: Image.asset('assets/images/bottomnavbar.png')),
+              child: Image.asset('assets/images/bottomnavbar.png',)),
           // Center(
           //   // child: isLoading
           //   //     ? const CircularProgressIndicator(color: Colors.white) // Loading indicator
