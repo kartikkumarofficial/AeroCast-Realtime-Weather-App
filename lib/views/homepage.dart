@@ -90,6 +90,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           Positioned(
+            left: -2,
               bottom: -10,
               // left: -90,
               width: Get.width*1,
