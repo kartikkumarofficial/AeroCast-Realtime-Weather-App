@@ -100,6 +100,7 @@ class _HomePageState extends State<HomePage> {
               child: Stack(
                 children: [
                   Container(
+                    width:double.infinity,
                       child: Image.asset('assets/images/bottomnavbar.png',fit: BoxFit.cover,)),
                   Positioned(
                     left: 20,
@@ -114,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Positioned(
-                    right: Get.width*0.42,
+                    right: Get.width*0.41,
                     bottom: 22,
                     child: Container(
                       decoration: BoxDecoration(
