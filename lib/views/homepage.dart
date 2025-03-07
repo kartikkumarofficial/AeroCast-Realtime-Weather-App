@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/services/weather_service.dart';
+import 'package:weather_app/views/scrollsheet%20test.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -105,7 +106,9 @@ class _HomePageState extends State<HomePage> {
                   Positioned(
                     left: 20,
                     bottom: 20,
-                    child: IconButton(onPressed: (){}, icon: Icon(CupertinoIcons.location_solid,color: Colors.white,size: Get.width*0.1,)
+                    child: IconButton(onPressed: (){
+                      Get.to(ScrollSheet());
+                    }, icon: Icon(CupertinoIcons.location_solid,color: Colors.white,size: Get.width*0.1,)
                     ),
                   ),
                   Positioned(
@@ -207,6 +210,35 @@ class WeatherDetail extends StatelessWidget {
           padding: EdgeInsets.only(top: Get.height * 0.13),
           child: Image.asset('assets/images/House 4 3.png'),
         ),
+        DraggableScrollableSheet(
+            initialChildSize: 0.3,
+          minChildSize: 0.1,
+          maxChildSize: 0.8,
+            builder: (context, scrollController) {
+              return Container(
+                child:Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Container(
+                            height: Get.width*0.018,
+                            width: Get.width*0.12,
+                            decoration: BoxDecoration(
+                                color: Color(0xFF333333),
+                                borderRadius: BorderRadius.circular(030)
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+
+                  ],
+                ) ,
+              );
+            },)
       ],
     );
   }
