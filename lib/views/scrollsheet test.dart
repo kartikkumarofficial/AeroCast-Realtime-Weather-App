@@ -58,11 +58,19 @@ class _ScrollSheetState extends State<ScrollSheet> {
                     ],
                   ),
                   Divider(color: Colors.white30.withOpacity(0.5),thickness: 0.5,),
-                  ListView(
+                  ListView.builder(
+                    itemCount: 4,
                     scrollDirection: Axis.horizontal,
-                    children: [
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: Get.height*0.1,
+                        width: Get.width*0.1,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20)
+                        ),
 
-                    ],
+                      );
+                    },
                   )
 
                 ],
