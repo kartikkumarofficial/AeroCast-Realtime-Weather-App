@@ -57,7 +57,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
                       )
                     ],
                   ),
-                  Divider(color: Colors.white30.withOpacity(0.5),thickness: 0.5,),//div
+                  Divider(color: Colors.white30.withOpacity(0.5),thickness: 0.5,),
                   ListView.builder(
                     itemCount: 4,
                     scrollDirection: Axis.horizontal,
