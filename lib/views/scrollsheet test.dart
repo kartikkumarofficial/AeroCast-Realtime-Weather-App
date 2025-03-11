@@ -13,11 +13,9 @@ class ScrollSheet extends StatefulWidget {
 class _ScrollSheetState extends State<ScrollSheet> {
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
-      body:Container(
-        color: Color(0xFF3f2c6e),
+      body: Container(
+        color: const Color(0xFF3f2c6e),
         child: DraggableScrollableSheet(
           initialChildSize: 0.3,
           minChildSize: 0.1,
@@ -26,7 +24,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
             return Container(
               decoration: BoxDecoration(
                 color: Colors.transparent.withOpacity(0.5),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(40),
                   topLeft: Radius.circular(40),
                 ),
@@ -36,257 +34,202 @@ class _ScrollSheetState extends State<ScrollSheet> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                       height: Get.width * 0.018,
                       width: Get.width * 0.15,
                       decoration: BoxDecoration(
-                        color: Color(0xFF333333).withOpacity(0.4),
+                        color: const Color(0xFF333333).withOpacity(0.4),
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
+
+                    // Forecast Row
                     Row(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 20.0),
-                          child: Text(
+                          child: const Text(
                             'Hourly Forecast',
-                            style: TextStyle(
-                              color: Colors.white60,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.black,
-                                  offset: Offset(0, 1),
-                                  blurRadius: 2,
-                                  spreadRadius: 2,
-                                ),
-                              ],
-                            ),
+                            style: TextStyle(color: Colors.white60, fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.3),
-                          child: Text(
+                          child: const Text(
                             'Weekly Forecast',
-                            style: TextStyle(
-                              color: Colors.white60,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                BoxShadow(
-                                  color: Colors.black,
-                                  offset: Offset(0, 1),
-                                  blurRadius: 2,
-                                  spreadRadius: 2,
-                                ),
-                              ],
-                            ),
+                            style: TextStyle(color: Colors.white60, fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
                     ),
                     Divider(color: Colors.white30.withOpacity(0.5), thickness: 0.5),
-                    SizedBox(
-                      height: 130,
-                      child: ListView.builder(
-                        itemCount: 6,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          DateTime now = DateTime.now();
-                          DateTime hourTime = now.add(Duration(hours: index - 1));
-                          String formattedHour = DateFormat.j().format(hourTime);
 
-                          return Container(
-                            margin: EdgeInsets.symmetric(horizontal: 8),
-                            padding: EdgeInsets.all(10),
-                            width: 70,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color.fromRGBO(100, 69, 115, 1.0),
-                                  Color.fromRGBO(56, 55, 96, 1.0),
+                    // Hourly Forecast List
+                    Padding(
+                      padding:  EdgeInsets.only(left: 15.0),
+                      child: SizedBox(
+                        height: Get.height * 0.15,
+                        child: ListView.builder(
+                          itemCount: 6,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            DateTime now = DateTime.now();
+                            DateTime hourTime = now.add(Duration(hours: index - 1));
+                            String formattedHour = DateFormat.j().format(hourTime);
+
+                            return Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
+                              padding: const EdgeInsets.all(10),
+                              width: Get.width * 0.17,
+                              decoration: BoxDecoration(
+
+                                border: Border.all(color: const Color(0xFF6440b3), width: 0.5),
+                                gradient: const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [Color.fromRGBO(100, 69, 115, 1.0), Color.fromRGBO(56, 55, 96, 1.0)],
+                                ),
+                                borderRadius: BorderRadius.circular(35),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    formattedHour,
+                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  const Icon(Icons.wb_sunny, size: 24, color: Colors.white),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    "${20 + index}°C",
+                                    style: const TextStyle(fontSize: 14, color: Colors.white),
+                                  ),
                                 ],
                               ),
-                              borderRadius: BorderRadius.circular(35),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  formattedHour,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                                SizedBox(height: 8),
-                                Icon(Icons.wb_sunny, size: 24, color: Colors.white),
-                                SizedBox(height: 8),
-                                Text(
-                                  "${20 + index}°C",
-                                  style: TextStyle(fontSize: 14, color: Colors.white),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ),
 
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20),
 
-                    //air quality container
+                    // Air Quality Container
                     Container(
-                      height: Get.height*0.2,
-                      width: Get.width*0.9,
+                      height: Get.height * 0.2,
+                      width: Get.width * 0.9,
                       decoration: BoxDecoration(
-                        color:Color(0xFF302261).withOpacity(0.8),
+                        color: const Color(0xFF302261).withOpacity(0.8),
                         borderRadius: BorderRadius.circular(28),
-                        border:Border.all(color: Color(0xFF6440b3),width: 0.5)
+                        border: Border.all(color: const Color(0xFF6440b3), width: 0.5),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding:  EdgeInsets.only(left: 15.0,top: 15,bottom: 10),
+                            padding: const EdgeInsets.only(left: 15.0, top: 15, bottom: 10),
                             child: Row(
                               children: [
-                                Icon(Icons.grid_view,color: Colors.grey.withOpacity(0.5),),
-                                Text('AIR QUALITY',style: TextStyle(fontSize: 18,color: Colors.grey.withOpacity(0.5),fontWeight: FontWeight.w600),)
+                                Icon(Icons.grid_view, color: Colors.grey.withOpacity(0.5)),
+                                Text(
+                                  'AIR QUALITY',
+                                  style: TextStyle(fontSize: 18, color: Colors.grey.withOpacity(0.5), fontWeight: FontWeight.w600),
+                                ),
                               ],
                             ),
                           ),
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.only(left: 18.0),
-                            child: Text('3-Low Health Risk',style: TextStyle(color: Colors.white,fontSize: 25),),
-                          ),
-                          SizedBox(height: 30,),
-                          //todo make a colorfull widget based on data here
-                          Padding(
-                            padding:  EdgeInsets.symmetric(horizontal: 20),
-                            child: Divider(
-                              color: Colors.black.withOpacity(0.5),
-                              thickness: 0.2,
+                            child: Text(
+                              '3-Low Health Risk',
+                              style: TextStyle(color: Colors.white, fontSize: 25),
                             ),
                           ),
-                          ListTile(
-                            title: Text('See more',style: TextStyle(fontSize: 20
-                                ,color: Colors.grey.withOpacity(0.8)),),
+                          // const SizedBox(height: ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Divider(color: Colors.black.withOpacity(0.5), thickness: 0.2),
+                          ),
+                          const ListTile(
+                            title: Text('See more', style: TextStyle(fontSize: 20, color: Colors.grey)),
                             trailing: Icon(Icons.arrow_forward_ios_rounded),
                           )
                         ],
                       ),
                     ),
 
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20),
 
-
-                    //uv index container
+                    // UV Index & Sunrise Containers
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(left:Get.width*0.05),
-                          child: Container(
-                            height: Get.width*0.45,
-                            width: Get.width*0.43,
-                            decoration: BoxDecoration(
-                                color:Color(0xFF302261).withOpacity(0.8),
-                                borderRadius: BorderRadius.circular(28),
-                                border:Border.all(color: Color(0xFF6440b3),width: 0.5)
-                            ),
+                        Container(
+                          height: Get.height * 0.25,
+                          width: Get.width * 0.43,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF302261).withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(28),
+                            border: Border.all(color: const Color(0xFF6440b3), width: 0.5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding:  EdgeInsets.only(left: 15.0,top: 15,bottom: 10),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.sunny,color: Colors.grey.withOpacity(0.5),),
-                                      Text('UV INDEX',style: TextStyle(fontSize: 18,color: Colors.grey.withOpacity(0.5),fontWeight: FontWeight.w600),)
-                                    ],
-                                  ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.sunny, color: Colors.grey.withOpacity(0.5)),
+                                    const Text('UV INDEX', style: TextStyle(fontSize: 18, color: Colors.grey)),
+                                  ],
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 18.0,top: 10),
-                                  child: Text('4\nModerate',style: TextStyle(color: Colors.white,fontSize: 28),),
-                                ),
-                                SizedBox(height: 30,),
-                                //todo make a colorfull widget based on data here
-
-
+                                const SizedBox(height: 10),
+                                const Text('4\nModerate', style: TextStyle(color: Colors.white, fontSize: 28)),
                               ],
                             ),
                           ),
                         ),
 
-                        Padding(
-                          padding: EdgeInsets.only(left: 17),
-                          child: Container(
-                            height: Get.width*0.45,
-                            width: Get.width*0.43,
-                            decoration: BoxDecoration(
-                                color:Color(0xFF302261).withOpacity(0.8),
-                                borderRadius: BorderRadius.circular(28),
-                                border:Border.all(color: Color(0xFF6440b3),width: 0.7)
-                            ),
+                        const SizedBox(width: 15),
 
+                        Container(
+                          height: Get.height * 0.25,
+                          width: Get.width * 0.43,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF302261).withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(28),
+                            border: Border.all(color: const Color(0xFF6440b3), width: 0.5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-
-                                Padding(
-                                  padding:  EdgeInsets.only(left: 15.0,top: 15,),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(bottom: 5.0),
-                                        child: Icon(CupertinoIcons.sunrise_fill,color: Colors.grey.withOpacity(0.5),),
-                                      ),
-                                      Text('SUNRISE',style: TextStyle(fontSize: 18,color: Colors.grey.withOpacity(0.5),fontWeight: FontWeight.w600),)
-                                    ],
-                                  ),
+                                Row(
+                                  children: [
+                                    Icon(CupertinoIcons.sunrise_fill, color: Colors.grey.withOpacity(0.5)),
+                                    const Text('SUNRISE', style: TextStyle(fontSize: 18, color: Colors.white)),
+                                  ],
                                 ),
-
-                                Padding(
-
-                                  padding: EdgeInsets.only(left: 18.0,top: 10),
-                                  child: Text(DateFormat('h:mm a').format(DateTime.now()),style: TextStyle(color: Colors.white,fontSize: 40),),
-                                ),
-                                SizedBox(height: 30,),
-                                //todo make a colorfull widget based on data here
-                                Divider(
-                                  color: Colors.white,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 20.0),
-                                  child: Text('Sunset: ${DateFormat('h:mma').format(DateTime.now())}',style: TextStyle(color: Colors.white,fontSize: 16),),
-                                )
-
-
+                                const SizedBox(height: 10),
+                                Text(DateFormat('h:mm a').format(DateTime.now()), style: const TextStyle(color: Colors.white, fontSize: 40)),
+                                const Divider(color: Colors.white),
+                                Text('Sunset: ${DateFormat('h:mma').format(DateTime.now())}', style: const TextStyle(color: Colors.white, fontSize: 16)),
                               ],
                             ),
                           ),
-                        )
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
             );
           },
         ),
-
       ),
     );
   }
 }
-
-
-
-
-
-
