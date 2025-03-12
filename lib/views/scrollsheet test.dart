@@ -132,10 +132,13 @@ class _ScrollSheetState extends State<ScrollSheet> {
                             padding: const EdgeInsets.only(left: 15.0, top: 15, bottom: 10),
                             child: Row(
                               children: [
-                                Icon(Icons.grid_view, color: Colors.grey.withOpacity(0.5)),
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 4.0),
+                                  child: Icon(Icons.grid_view,size: Get.width*0.04, color: Colors.grey.withOpacity(0.5)),
+                                ),
                                 Text(
                                   'AIR QUALITY',
-                                  style: TextStyle(fontSize: 18, color: Colors.grey.withOpacity(0.5), fontWeight: FontWeight.w600),
+                                  style: TextStyle(fontSize: Get.width*0.045, color: Colors.grey.withOpacity(0.5), fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
