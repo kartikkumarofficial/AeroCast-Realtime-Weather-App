@@ -44,12 +44,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
+
           Image.asset(
             'assets/images/29.png',
             filterQuality: FilterQuality.high,
             fit: BoxFit.cover,
             height: Get.height * 1,
           ),
+
           Column(
             children: [
               Padding(
@@ -91,6 +93,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          ScrollSheet(),
           Positioned(
             // left: -2,
             right: 0,
@@ -100,6 +103,7 @@ class _HomePageState extends State<HomePage> {
               width: Get.width*1,
               child: Stack(
                 children: [
+                  //bottomnavbar
                   Container(
                     width:double.infinity,
                       child: Image.asset('assets/images/bottomnavbar.png',fit: BoxFit.cover,)),
@@ -159,6 +163,7 @@ class _HomePageState extends State<HomePage> {
           //   //     :
           //   child :WeatherDetail(weather: weatherInfo!),
           // ),
+
         ],
       ),
     );
