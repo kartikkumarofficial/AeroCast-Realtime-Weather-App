@@ -268,9 +268,11 @@ class _ScrollSheetState extends State<ScrollSheet> {
                                   children: [
                                     Icon(CupertinoIcons.wind,size: Get.width*0.05, color: Colors.grey.withOpacity(0.5)),
                                     Text(' WIND', style: TextStyle(fontSize: Get.width*0.04, color: Colors.grey)),
+
                                   ],
                                 ),
                                 SizedBox(height: 10),
+                                Center(child: Image.asset('assets/images/wind.png',height: Get.width*0.35,))
                                 // Text('4\nModerate', style: TextStyle(color: Colors.white, fontSize: Get.width*0.075)),
                               ],
                             ),
@@ -300,18 +302,14 @@ class _ScrollSheetState extends State<ScrollSheet> {
                                   children: [
                                     Row(
                                       children: [
-                                        Icon(CupertinoIcons.sunrise_fill,size: Get.width*0.05, color: Colors.grey.withOpacity(0.5)),
-                                        Text(' SUNRISE', style: TextStyle(fontSize: Get.width*0.04, color: Colors.grey)),
-                                      ],
-                                    ),
-                                    SizedBox(height: 10),
-                                    Row(
-                                      children: [
-                                        Text(DateFormat('h:mm a').format(DateTime.now()), style:  TextStyle(color: Colors.white, fontSize: Get.width*0.085)),
+                                        Icon(Icons.water_drop,size: Get.width*0.05, color: Colors.grey.withOpacity(0.5)),
+                                        Text(' RAINFALL', style: TextStyle(fontSize: Get.width*0.04, color: Colors.grey)),
                                       ],
                                     ),
 
-                                    Text('Sunset: ${DateFormat('h:mma').format(DateTime.now())}', style:  TextStyle(color: Colors.white, fontSize: 16)),
+                                    SizedBox(height: 10),
+                                    Text('1.8 mm', style: TextStyle(color: Colors.white, fontSize: Get.width*0.085)),
+                                    Text(' in last hour', style: TextStyle(color: Colors.white, fontSize: Get.width*0.06)),
                                   ],
                                 ),
                               ),
