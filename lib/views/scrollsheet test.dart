@@ -42,9 +42,10 @@ class _ScrollSheetState extends State<ScrollSheet> {
                       Container(
                         margin:  EdgeInsets.only(top: 10),
                         height: Get.width * 0.018,
-                        width: Get.width * 0.15,
+                        width: Get.width * 0.13,
                         decoration: BoxDecoration(
-                          color:  Color(0xFF333333).withOpacity(0.4),
+                          color: Colors.grey.withOpacity(0.5),
+                          // color:  Color(0xFF333333).withOpacity(0.7),
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
@@ -63,7 +64,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
                           Padding(
                             padding: EdgeInsets.only(left: Get.width * 0.3),
                             child:  Text(
-                              ' Weekly Forecast',
+                              '    Weekly Forecast',
                               style: TextStyle(color: Colors.white60, fontSize: 14, fontWeight: FontWeight.bold),
                             ),
                           ),
