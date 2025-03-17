@@ -26,10 +26,10 @@ class _ScrollSheetState extends State<ScrollSheet> {
               topRight: Radius.circular(40),
             ),
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10,sigmaY: 10),
+              filter: ImageFilter.blur(sigmaX: 20,sigmaY: 20),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.transparent.withOpacity(0.5),
+                  color: Colors.transparent.withOpacity(0.15),
                   borderRadius:  BorderRadius.only(
                     topRight: Radius.circular(40),
                     topLeft: Radius.circular(40),
@@ -63,7 +63,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
                           Padding(
                             padding: EdgeInsets.only(left: Get.width * 0.3),
                             child:  Text(
-                              'Weekly Forecast',
+                              ' Weekly Forecast',
                               style: TextStyle(color: Colors.white60, fontSize: 14, fontWeight: FontWeight.bold),
                             ),
                           ),
