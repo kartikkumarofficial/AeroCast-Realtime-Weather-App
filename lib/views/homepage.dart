@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/services/weather_service.dart';
+import 'package:weather_app/views/mappage.dart';
 import 'package:weather_app/views/scrollsheet%20test.dart';
 
 class HomePage extends StatefulWidget {
@@ -111,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                     left: 20,
                     bottom: 20,
                     child: IconButton(onPressed: (){
-                      Get.to(ScrollSheet());
+                      Get.to(MapScreen());
                     }, icon: Icon(CupertinoIcons.location_solid,color: Colors.white,size: Get.width*0.1,)
                     ),
                   ),
