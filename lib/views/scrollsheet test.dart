@@ -162,7 +162,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
                             child: Divider(color: Colors.black.withOpacity(0.5), thickness: 0.2),
                           ),
                            ListTile(
-                            title: Text('See more', style: TextStyle(fontSize:Get.width*0.048, color: Colors.grey)),
+                            title: Text('See more', style: TextStyle(fontSize:Get.width*0.045, color: Colors.grey)),
                             trailing: Icon(Icons.arrow_forward_ios_rounded),
                           )
                         ],
@@ -195,7 +195,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
                                   ],
                                 ),
                                  SizedBox(height: 10),
-                                 Text('4\nModerate', style: TextStyle(color: Colors.white, fontSize: 28)),
+                                 Text('4\nModerate', style: TextStyle(color: Colors.white, fontSize: Get.width*0.075)),
                               ],
                             ),
                           ),
@@ -203,6 +203,54 @@ class _ScrollSheetState extends State<ScrollSheet> {
 
                          SizedBox(width: 15),
 
+                        Stack(
+                          children: [
+                            Divider(thickness:4,color: Colors.grey),
+
+
+
+                            Container(
+                              height: Get.height * 0.25,
+                              width: Get.width * 0.43,
+                              decoration: BoxDecoration(
+                                color:  Color(0xFF302261).withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(28),
+                                border: Border.all(color:  Color(0xFF6440b3), width: 0.5),
+                              ),
+                              child: Padding(
+                                padding:  EdgeInsets.all(15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(CupertinoIcons.sunrise_fill,size: Get.width*0.05, color: Colors.grey.withOpacity(0.5)),
+                                        Text(' SUNRISE', style: TextStyle(fontSize: Get.width*0.04, color: Colors.grey)),
+                                      ],
+                                    ),
+                                     SizedBox(height: 10),
+                                    Row(
+                                      children: [
+                                        Text(DateFormat('h:mm a').format(DateTime.now()), style:  TextStyle(color: Colors.white, fontSize: Get.width*0.085)),
+                                      ],
+                                    ),
+
+                                    Text('Sunset: ${DateFormat('h:mma').format(DateTime.now())}', style:  TextStyle(color: Colors.white, fontSize: 16)),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: Get.width*0.04,),
+                    //wind and rainfall containers
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         Container(
                           height: Get.height * 0.25,
                           width: Get.width * 0.43,
@@ -218,21 +266,58 @@ class _ScrollSheetState extends State<ScrollSheet> {
                               children: [
                                 Row(
                                   children: [
-                                    Icon(CupertinoIcons.sunrise_fill,size: Get.width*0.05, color: Colors.grey.withOpacity(0.5)),
-                                    Text(' SUNRISE', style: TextStyle(fontSize: Get.width*0.04, color: Colors.grey)),
+                                    Icon(CupertinoIcons.wind,size: Get.width*0.05, color: Colors.grey.withOpacity(0.5)),
+                                    Text(' WIND', style: TextStyle(fontSize: Get.width*0.04, color: Colors.grey)),
                                   ],
                                 ),
-                                 SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    Text(DateFormat('h:mm a').format(DateTime.now()), style:  TextStyle(color: Colors.white, fontSize: 40)),
-                                  ],
-                                ),
-                                 Divider(color: Colors.white),
-                                Text('Sunset: ${DateFormat('h:mma').format(DateTime.now())}', style:  TextStyle(color: Colors.white, fontSize: 16)),
+                                SizedBox(height: 10),
+                                // Text('4\nModerate', style: TextStyle(color: Colors.white, fontSize: Get.width*0.075)),
                               ],
                             ),
                           ),
+                        ),
+
+                        SizedBox(width: 15),
+
+                        Stack(
+                          children: [
+                            Divider(thickness:4,color: Colors.grey),
+
+
+
+                            Container(
+                              height: Get.height * 0.25,
+                              width: Get.width * 0.43,
+                              decoration: BoxDecoration(
+                                color:  Color(0xFF302261).withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(28),
+                                border: Border.all(color:  Color(0xFF6440b3), width: 0.5),
+                              ),
+                              child: Padding(
+                                padding:  EdgeInsets.all(15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(CupertinoIcons.sunrise_fill,size: Get.width*0.05, color: Colors.grey.withOpacity(0.5)),
+                                        Text(' SUNRISE', style: TextStyle(fontSize: Get.width*0.04, color: Colors.grey)),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10),
+                                    Row(
+                                      children: [
+                                        Text(DateFormat('h:mm a').format(DateTime.now()), style:  TextStyle(color: Colors.white, fontSize: Get.width*0.085)),
+                                      ],
+                                    ),
+
+                                    Text('Sunset: ${DateFormat('h:mma').format(DateTime.now())}', style:  TextStyle(color: Colors.white, fontSize: 16)),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                          ],
                         ),
                       ],
                     ),
