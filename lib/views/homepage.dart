@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: Get.height * 0.13),
+                padding: EdgeInsets.only(left:10,top: Get.height * 0.0),
                 child: Image.asset('assets/images/House 4 3.png'),
               ),
             ],
