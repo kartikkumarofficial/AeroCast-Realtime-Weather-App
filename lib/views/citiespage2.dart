@@ -79,6 +79,7 @@ class _OtherCitiesState extends State<OtherCities> {
                         fontSize: Get.width*0.17,
                         color: Colors.white
                       ),)),
+                  
                   Positioned(
                       left: Get.width*0.06,
                       top: Get.width*0.27,
@@ -97,6 +98,21 @@ class _OtherCitiesState extends State<OtherCities> {
                         fontSize: Get.width*0.05,
                         color: Colors.white
                       ),)),
+                  Positioned(
+                      right: Get.width*0.06,
+                      top: Get.width*0.33,
+                      child: Text('Mostly Sunny',style:
+                      GoogleFonts.workSans(
+                        fontWeight: FontWeight.w500,
+                        fontSize: Get.width*0.04,
+                        color: Colors.white
+                      ),)),
+                  Positioned(
+                      left: Get.width*0.06,
+                      top: Get.width*0.06,
+                      child: Image.asset('assets/images/weather icons/sun.png')
+                  ),
+
                 ],
               ),
             )
