@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CitiesScreen extends StatelessWidget {
+class CitiesScreen extends StatefulWidget {
+  @override
+  State<CitiesScreen> createState() => _CitiesScreenState();
+}
+
+class _CitiesScreenState extends State<CitiesScreen> {
   final List<Map<String, dynamic>> weatherData = [
     {
       "temperature": 19,
@@ -53,7 +58,7 @@ class CitiesScreen extends StatelessWidget {
               ),
               backgroundColor: Colors.transparent,
               elevation: 0,
-              centerTitle: true,
+              // centerTitle: true,
               actions: [
                 IconButton(
                   icon: Icon(Icons.more_vert, color: Colors.white),
@@ -62,7 +67,7 @@ class CitiesScreen extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: "Search city or airport",
@@ -95,6 +100,14 @@ class CitiesScreen extends StatelessWidget {
                 },
               ),
             ),
+            Container(
+              // width: double.infinity,
+              child: Stack(
+                children: [
+                  Image.asset('assets/images/container.png',)
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -125,45 +138,50 @@ class WeatherTile extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage('assets/images/container.png')),
+        // color: Colors.red,
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Stack(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Image.asset('assets/images/container.png',width: double.infinity,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "$temperature°",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "$temperature°",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "H:$high°  L:$low°",
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                  ),
+                  Text(
+                    location,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    condition,
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                "H:$high°  L:$low°",
-                style: TextStyle(
-                  color: Colors.white70,
-                ),
-              ),
-              Text(
-                location,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
-              ),
-              Text(
-                condition,
-                style: TextStyle(
-                  color: Colors.white70,
-                ),
-              ),
+              Icon(icon, color: Colors.white, size: 40),
             ],
           ),
-          Icon(icon, color: Colors.white, size: 40),
         ],
       ),
     );

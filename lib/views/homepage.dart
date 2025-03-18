@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/services/weather_service.dart';
 import 'package:weather_app/views/cities.dart';
+import 'package:weather_app/views/citiespage2.dart';
 import 'package:weather_app/views/mappage.dart';
 import 'package:weather_app/views/scrollsheet%20test.dart';
 
@@ -121,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                     right: 20,
                     bottom: 20,
                     child: IconButton(onPressed: (){
-                      Get.to(CitiesScreen());
+                      Get.to(OtherCities());
                     }, icon: Icon(CupertinoIcons.list_bullet,color: Colors.white,size: Get.width*0.1,)
                     ),
                   ),
