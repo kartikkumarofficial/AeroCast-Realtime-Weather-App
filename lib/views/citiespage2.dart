@@ -71,14 +71,32 @@ class _OtherCitiesState extends State<OtherCities> {
                 children: [
                   Image.asset('assets/images/container.png',width: Get.width*0.9,height: Get.width*0.45,),
                   Positioned(
-                      left: Get.width*0.07,
-                      top: Get.width*0.04,
+                      left: Get.width*0.06,
+                      top: Get.width*0.06,
                       child: Text('24°',style:
                       GoogleFonts.workSans(
                         fontWeight: FontWeight.w500,
                         fontSize: Get.width*0.17,
                         color: Colors.white
-                      ),))
+                      ),)),
+                  Positioned(
+                      left: Get.width*0.06,
+                      top: Get.width*0.27,
+                      child: Text('H: 26° L:-16°',style:
+                      GoogleFonts.workSans(
+                        fontWeight: FontWeight.w500,
+                        fontSize: Get.width*0.04,
+                        color: Colors.white.withOpacity(0.5)
+                      ),)),
+                  Positioned(
+                      left: Get.width*0.06,
+                      top: Get.width*0.32,
+                      child: Text('Montral, Canada',style:
+                      GoogleFonts.workSans(
+                        fontWeight: FontWeight.w500,
+                        fontSize: Get.width*0.05,
+                        color: Colors.white
+                      ),)),
                 ],
               ),
             )
