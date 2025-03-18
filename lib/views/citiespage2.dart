@@ -108,9 +108,9 @@ class _OtherCitiesState extends State<OtherCities> {
                         color: Colors.white
                       ),)),
                   Positioned(
-                      left: Get.width*0.06,
-                      top: Get.width*0.06,
-                      child: Image.asset('assets/images/weather icons/sun.png')
+                      right: Get.width*0.06,
+                      top: Get.width*0.03,
+                      child: Image.asset('assets/images/weather icons/sun.png',height: Get.width*0.25,)
                   ),
 
                 ],
