@@ -89,7 +89,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
                               return Container(
                                 margin:  EdgeInsets.symmetric(horizontal: 8),
                                 padding:  EdgeInsets.all(10),
-                                width: Get.width * 0.1,
+                                width: Get.width * 0.18,
                                 decoration: BoxDecoration(
 
                                   border: Border.all(color:  Color(0xFF6440b3), width: 0.5),
