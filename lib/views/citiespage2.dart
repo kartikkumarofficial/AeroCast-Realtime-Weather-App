@@ -66,7 +66,7 @@ class _OtherCitiesState extends State<OtherCities> {
             SizedBox(height: 15),
             
             Container(
-              color: Colors.red,
+              // color: Colors.red,
               child:Stack(
                 children: [
                   Image.asset('assets/images/container.png',width: Get.width*0.9,height: Get.width*0.45,),
