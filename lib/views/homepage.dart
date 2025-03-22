@@ -85,20 +85,27 @@ class _HomePageState extends State<HomePage> {
             Center(child: CircularProgressIndicator(color: Colors.white,))
           else if (_weatherData != null)
           Column(
+
             children: [
               Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: Get.height * 0.1),
-                    child: Text(
-                      // weather.name,
-                      '${_weatherData!['name']}',
-                      style: GoogleFonts.playfairDisplay(
-                        fontSize: Get.height * 0.05,
-                        color: Colors.white,
+
+
+                  Container(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: Get.height * 0.1),
+                      child: Text(
+                        // weather.name,
+                        '${_weatherData!['name']}',
+                        style: GoogleFonts.playfairDisplay(
+                          fontSize: Get.height * 0.05,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
+                  // SizedBox(height:- Get.height * 0.005),
 
 
 // SizedBox(height: 0,),
@@ -113,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                     '${capitalizeEachWord(_weatherData!['weather'][0]['description'])}',
                     style: GoogleFonts.dmSans(
                       fontWeight: FontWeight.w700,
-                      fontSize: Get.height * 0.02,
+                      fontSize: Get.height * 0.025,
                       color: Colors.grey,
                     ),
                   ),
