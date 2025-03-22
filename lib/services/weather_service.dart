@@ -7,21 +7,19 @@ import '../models/weather_model.dart';
 
 
 class WeatherService{
-  fetchWeather() async{
-    final response = await http.get(
-        Uri.parse("https://api.openweathermap.org/data/2.5/weather?lat={30.2753°}&lon={77.0476°}&appid={674d0ce02de5536b3a7c0436bc6d9ad2}"));
-    try{
-      if(response.statusCode==200){
-        var json = jsonDecode(response.body);
-        return WeatherData.fromJson(json);
-      }else{
-        throw Exception('Failed to load Weather Data');
-      }
+  final String apiKey = "674d0ce02de5536b3a7c0436bc6d9ad2";
+  final String baseUrl = "https://api.openweathermap.org/data/2.5/weather";
+  // final String city = "Dehradun";
+  Future<Map<String, dynamic>> fetchWeather(String city) async {
+    final url = Uri.parse('$baseUrl?q=$city&appid=$apiKey&units=metric');
+    final response = await http.get(url);
 
-      }catch(e){
-        print(e.toString());
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception("Failed to fetch weather data");
     }
-    }
+  }
 
 
   }

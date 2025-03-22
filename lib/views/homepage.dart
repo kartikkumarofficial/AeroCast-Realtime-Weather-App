@@ -17,29 +17,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String _city = "Dehradun";
+  final WeatherService _weatherService = WeatherService();
   WeatherData? weatherInfo;
-  // bool isLoading = true;
+  bool isLoading = false;
   String errorMessage = "";
+  void _fetchWeather() async {
+    setState(() {
+      _isLoading = true;
+    });
 
-  myWeather() async {
-
-      WeatherData fetchedWeather = await WeatherService().fetchWeather();
+    try {
+      final data = await _weatherService.fetchWeather(_city);
       setState(() {
-        weatherInfo = fetchedWeather;
-        // isLoading = false;
+        _weatherData = data;
+        _isLoading = false;
       });
-    // } catch (error) {
+    } catch (error) {
       setState(() {
-        errorMessage = 'Failed to load weather data. Please try again.';
-        // isLoading = false;
+        _isLoading = false;
       });
-    // }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Failed to fetch weather data")),
+      );
+    }
   }
+
+  // myWeather() async {
+  //
+  //     Map<String, dynamic> fetchedWeather = await WeatherService().fetchWeather();
+  //     setState(() {
+  //       weatherInfo = fetchedWeather;
+  //       // isLoading = false;
+  //     });
+  //   // } catch (error) {
+  //     setState(() {
+  //       errorMessage = 'Failed to load weather data. Please try again.';
+  //       // isLoading = false;
+  //     });
+  //   // }
+  // }
 
   @override
   void initState() {
     super.initState();
-    myWeather();
+    _fetchWeather();
   }
 
   @override
