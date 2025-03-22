@@ -12,6 +12,8 @@ class WeatherService{
   // final String city = "Dehradun";
   Future<Map<String, dynamic>> fetchWeather(String city) async {
     final url = Uri.parse('$baseUrl?q=$city&appid=$apiKey&units=metric');
+    // Uri.parse("https://api.openweathermap.org/data/2.5/weather?lat={30.2753°}&lon={77.0476°}&appid={674d0ce02de5536b3a7c0436bc6d9ad2}"));
+    // https://api.openweathermap.org/data/2.5/weather?q=Dehradun&appid=674d0ce02de5536b3a7c0436bc6d9ad2&units=metric
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

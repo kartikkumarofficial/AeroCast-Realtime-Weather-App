@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   bool _isLoading = false;
   Map<String, dynamic>? _weatherData;
   String errorMessage = "";
+
   void _fetchWeather() async {
     setState(() {
       _isLoading = true;
@@ -79,7 +80,7 @@ class _HomePageState extends State<HomePage> {
             height: Get.height * 1,
           ),
           if (_isLoading)
-            CircularProgressIndicator()
+            Center(child: CircularProgressIndicator(color: Colors.white,))
           else if (_weatherData != null)
           Column(
             children: [
@@ -91,14 +92,14 @@ class _HomePageState extends State<HomePage> {
                       // weather.name,
                       '${_weatherData!['name']}',
                       style: GoogleFonts.playfairDisplay(
-                        fontSize: Get.height * 0.055,
+                        fontSize: Get.height * 0.05,
                         color: Colors.white,
                       ),
                     ),
                   ),
 
 
-
+// SizedBox(height: 0,),
               Text(
                 '${_weatherData!['main']['temp']}°C',
                 style: GoogleFonts.cinzel(
@@ -115,16 +116,19 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Text(
-                'H: 24 L:18',
+                'H: ${_weatherData!['main']['temp_max']}° L: ${_weatherData!['main']['temp_min']}°',
                 style: GoogleFonts.allerta(
-                  fontSize: Get.height * 0.028,
+                  fontSize: Get.height * 0.02,
                   color: Colors.white,
+                  fontWeight: FontWeight.bold
                 ),
               ),
+                  // Image.network("https://openweathermap.org/img/wn/01d@2x.png",)
+
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left:10,top: Get.height * 0.0),
+                padding: EdgeInsets.only(left:10,top: Get.height * 0.01),
                 child: Image.asset('assets/images/House 4 3.png'),
               ),
             ],
