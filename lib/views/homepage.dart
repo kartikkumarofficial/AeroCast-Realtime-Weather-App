@@ -9,6 +9,8 @@ import 'package:weather_app/views/citiespage2.dart';
 import 'package:weather_app/views/mappage.dart';
 import 'package:weather_app/views/scrollsheet%20test.dart';
 
+import '../functions.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -107,15 +109,16 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white,
                 ),
               ),
-              Text(
-                'Condition: ${_weatherData!['weather'][0]['description']}',
-                style: GoogleFonts.dmSans(
-                  fontWeight: FontWeight.w700,
-                  fontSize: Get.height * 0.02,
-                  color: Colors.grey,
-                ),
-              ),
-              Text(
+                  Text(
+                    '${capitalizeEachWord(_weatherData!['weather'][0]['description'])}',
+                    style: GoogleFonts.dmSans(
+                      fontWeight: FontWeight.w700,
+                      fontSize: Get.height * 0.02,
+                      color: Colors.grey,
+                    ),
+                  ),
+
+                  Text(
                 'H: ${_weatherData!['main']['temp_max']}° L: ${_weatherData!['main']['temp_min']}°',
                 style: GoogleFonts.allerta(
                   fontSize: Get.height * 0.02,
