@@ -20,7 +20,8 @@ class _HomePageState extends State<HomePage> {
   String _city = "Dehradun";
   final WeatherService _weatherService = WeatherService();
   WeatherData? weatherInfo;
-  bool isLoading = false;
+  bool _isLoading = false;
+  Map<String, dynamic>? _weatherData;
   String errorMessage = "";
   void _fetchWeather() async {
     setState(() {
@@ -76,29 +77,32 @@ class _HomePageState extends State<HomePage> {
             fit: BoxFit.cover,
             height: Get.height * 1,
           ),
-
+          if (_isLoading)
+            CircularProgressIndicator()
+          else if (_weatherData != null)
           Column(
             children: [
               Padding(
                 padding: EdgeInsets.only(top: Get.height * 0.1),
                 child: Text(
                   // weather.name,
-                  'Mullana',
+                  '${_weatherData!['name']}',
                   style: GoogleFonts.playfairDisplay(
                     fontSize: Get.height * 0.055,
                     color: Colors.white,
                   ),
                 ),
               ),
+
               Text(
-                '19',
+                '${_weatherData!['main']['temp']}°C}',
                 style: GoogleFonts.cinzel(
                   fontSize: Get.height * 0.09,
                   color: Colors.white,
                 ),
               ),
               Text(
-                'Mostly Clear',
+                'Condition: ${_weatherData!['weather'][0]['description']}',
                 style: GoogleFonts.dmSans(
                   fontWeight: FontWeight.w700,
                   fontSize: Get.height * 0.02,
@@ -169,7 +173,7 @@ class _HomePageState extends State<HomePage> {
 
                         backgroundColor: Colors.white,
                         child: IconButton(
-                            onPressed: (){}, icon: Icon(CupertinoIcons.add,color:Colors.deepPurple ,size: Get.width*0.06,)
+                            onPressed: (){_fetchWeather();}, icon: Icon(CupertinoIcons.add,color:Colors.deepPurple ,size: Get.width*0.06,)
                         ),
                       ),
                     ),
