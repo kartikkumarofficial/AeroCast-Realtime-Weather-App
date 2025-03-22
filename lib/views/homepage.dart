@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
         SnackBar(content: Text("Failed to fetch weather data")),
       );
     }
+
   }
 
   // myWeather() async {
