@@ -82,20 +82,24 @@ class _HomePageState extends State<HomePage> {
           else if (_weatherData != null)
           Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: Get.height * 0.1),
-                child: Text(
-                  // weather.name,
-                  '${_weatherData!['name']}',
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: Get.height * 0.055,
-                    color: Colors.white,
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: Get.height * 0.1),
+                    child: Text(
+                      // weather.name,
+                      '${_weatherData!['name']}',
+                      style: GoogleFonts.playfairDisplay(
+                        fontSize: Get.height * 0.055,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ),
-              ),
+
+
 
               Text(
-                '${_weatherData!['main']['temp']}°C}',
+                '${_weatherData!['main']['temp']}°C',
                 style: GoogleFonts.cinzel(
                   fontSize: Get.height * 0.09,
                   color: Colors.white,
@@ -115,6 +119,8 @@ class _HomePageState extends State<HomePage> {
                   fontSize: Get.height * 0.028,
                   color: Colors.white,
                 ),
+              ),
+                ],
               ),
               Padding(
                 padding: EdgeInsets.only(left:10,top: Get.height * 0.0),
