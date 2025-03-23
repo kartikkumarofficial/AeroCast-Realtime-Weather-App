@@ -71,7 +71,6 @@ flutter_icons:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/
     - assets/images/
     - assets/images/weather icons/
 
