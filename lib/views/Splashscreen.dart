@@ -20,7 +20,7 @@ class _SplashscreenState extends State<Splashscreen> {
   }
 
   void _startTimer() {
-    Timer(Duration(milliseconds: 1500), () {
+    Timer(Duration(milliseconds: 1500000), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomePage()));
     });
@@ -44,9 +44,9 @@ class _SplashscreenState extends State<Splashscreen> {
           width: srcwidth,
           decoration:BoxDecoration(
             gradient: LinearGradient(
-            colors: [Colors.black, Colors.blue],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            colors: [Color(0xFF011c37), Color(0xFF340b17)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
           ),),
           child: Center(
             child: AnimatedOpacity(
@@ -57,7 +57,13 @@ class _SplashscreenState extends State<Splashscreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Weather APP')
+                    Image.asset(
+                      'assets/images/weather_thumb.png',
+                      color: Colors.white,
+                      height: srcwidth * 0.5,
+                      width: srcwidth * 0.5,
+                    ),
+                    Text('Weather APP',style: TextStyle(color: Colors.white),)
 
                   ],
                 ),

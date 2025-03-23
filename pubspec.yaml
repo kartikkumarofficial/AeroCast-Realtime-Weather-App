@@ -44,6 +44,7 @@ dependencies:
   flutter_map: ^7.0.2
   latlong2: ^0.9.1
   geolocator: ^13.0.2
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +62,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/weather_thumb.png"
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
