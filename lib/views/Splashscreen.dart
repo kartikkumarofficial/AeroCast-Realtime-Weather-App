@@ -59,7 +59,7 @@ class _SplashscreenState extends State<Splashscreen> {
                   children: [
                     Image.asset(
                       'assets/images/weather_thumb.png',
-                      color: Colors.white,
+                      // color: Colors.white,
                       height: srcwidth * 0.5,
                       width: srcwidth * 0.5,
                     ),
