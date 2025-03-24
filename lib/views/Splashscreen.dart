@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/views/homepage.dart';
 
 
@@ -20,7 +22,7 @@ class _SplashscreenState extends State<Splashscreen> {
   }
 
   void _startTimer() {
-    Timer(Duration(milliseconds: 1500), () {
+    Timer(Duration(milliseconds: 1500000), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomePage()));
     });
@@ -50,20 +52,23 @@ class _SplashscreenState extends State<Splashscreen> {
           ),),
           child: Center(
             child: AnimatedOpacity(
-              opacity: _opacity,  
+              opacity: _opacity,
               duration: Duration(seconds: 1),
               child: Padding(
-                padding: EdgeInsets.only(top: srcheight * 0.35),
+                padding: EdgeInsets.only(top: srcheight * 0.2),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Image.asset(
                       'assets/images/weather_thumb.png',
                       // color: Colors.white,
-                      height: srcwidth * 0.5,
-                      width: srcwidth * 0.5,
+                      height: srcwidth * 1,
+                      width: srcwidth * 1,
                     ),
-                    Text('Weather APP',style: TextStyle(color: Colors.white),)
+                    Text('AeroCast',style: GoogleFonts.sanchez(
+                        fontSize: Get.width*0.14,
+                        color: Colors.white),)
 
                   ],
                 ),
