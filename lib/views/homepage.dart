@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String _city = "Dehradun";
+  String city = "Dehradun";
   final WeatherService _weatherService = WeatherService();
   WeatherData? weatherInfo;
   bool _isLoading = false;
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     });
 
     try {
-      final data = await _weatherService.fetchWeather(_city);
+      final data = await _weatherService.fetchWeather(city);
       setState(() {
         _weatherData = data;
         _isLoading = false;
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                         // weather.name,
                         '${_weatherData!['name']}',
                         style: GoogleFonts.playfairDisplay(
-                          fontSize: Get.height * 0.05,
+                          fontSize: Get.height * 0.055,
                           color: Colors.white,
                         ),
                       ),
@@ -112,15 +112,15 @@ class _HomePageState extends State<HomePage> {
               Text(
                 '${_weatherData!['main']['temp']}°C',
                 style: GoogleFonts.cinzel(
-                  fontSize: Get.height * 0.09,
+                  fontSize: Get.height * 0.088,
                   color: Colors.white,
                 ),
               ),
                   Text(
                     '${capitalizeEachWord(_weatherData!['weather'][0]['description'])}',
                     style: GoogleFonts.dmSans(
-                      fontWeight: FontWeight.w700,
-                      fontSize: Get.height * 0.025,
+                      fontWeight: FontWeight.w600,
+                      fontSize: Get.height * 0.03,
                       color: Colors.grey,
                     ),
                   ),
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                   Text(
                 'H: ${_weatherData!['main']['temp_max']}° L: ${_weatherData!['main']['temp_min']}°',
                 style: GoogleFonts.allerta(
-                  fontSize: Get.height * 0.02,
+                  fontSize: Get.height * 0.024,
                   color: Colors.white,
                   fontWeight: FontWeight.bold
                 ),
@@ -157,14 +157,31 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     width:double.infinity,
                       child: Image.asset('assets/images/bottomnavbar.png',fit: BoxFit.cover,)),
+                  // Positioned(
+                  //   left: 20,
+                  //   bottom: 20,
+                  //   child: IconButton(onPressed: (){
+                  //     Get.to(MapScreen());
+                  //   }, icon: Icon(CupertinoIcons.location_solid,color: Colors.white,size: Get.width*0.1,)
+                  //   ),
+                  // ),
                   Positioned(
                     left: 20,
                     bottom: 20,
-                    child: IconButton(onPressed: (){
-                      Get.to(MapScreen());
-                    }, icon: Icon(CupertinoIcons.location_solid,color: Colors.white,size: Get.width*0.1,)
+                    child: IconButton(
+                      onPressed: () async {
+                        final result = await Get.to(MapScreen());
+                        if (result != null && result['city'] != null) {
+                          setState(() {
+                            city = result['city'];  // Update the city name
+                          });
+                          _fetchWeather(); // Fetch weather for the new city
+                        }
+                      },
+                      icon: Icon(CupertinoIcons.location_solid, color: Colors.white, size: Get.width * 0.1),
                     ),
                   ),
+
                   Positioned(
                     right: 20,
                     bottom: 20,

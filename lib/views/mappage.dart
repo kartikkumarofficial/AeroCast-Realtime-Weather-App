@@ -16,12 +16,15 @@ class _MapScreenState extends State<MapScreen> {
 
   // Function to get city name from coordinates
   Future<void> getCityName(LatLng latLng) async {
+    setState(() {
+      selectedCity = "Fetching...";
+    });
+
     final url = Uri.parse(
         "https://nominatim.openstreetmap.org/reverse?lat=${latLng.latitude}&lon=${latLng.longitude}&format=json");
 
     try {
       final response = await http.get(url);
-
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         setState(() {
@@ -42,6 +45,10 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
+  void showSnackbar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,11 +59,11 @@ class _MapScreenState extends State<MapScreen> {
           initialCenter: LatLng(28.7041, 77.1025),
           initialZoom: 10,
           onTap: (tapPosition, latLng) async {
-            // When user taps, update selectedLocation and fetch city name
             setState(() {
               selectedLocation = latLng;
               selectedCity = null;
             });
+            _mapController.move(latLng, _mapController.camera.zoom);
             await getCityName(latLng);
           },
         ),
@@ -64,7 +71,6 @@ class _MapScreenState extends State<MapScreen> {
           TileLayer(
             urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
           ),
-
           if (selectedLocation != null)
             MarkerLayer(
               markers: [
@@ -82,20 +88,13 @@ class _MapScreenState extends State<MapScreen> {
         onPressed: () {
           if (selectedLocation != null &&
               selectedCity != null &&
-              selectedCity != "City not found") {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                  content: Text("Selected City: $selectedCity")),
-            );
-            Navigator.pop(context, {
-              'location': selectedLocation,
-              'city': selectedCity
-            });
+              selectedCity!.isNotEmpty &&
+              selectedCity != "City not found" &&
+              selectedCity != "Fetching...") {
+            showSnackbar("Selected City: $selectedCity");
+            Navigator.pop(context, {'location': selectedLocation, 'city': selectedCity});
           } else {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                  content: Text("Failed to get location. Please pick a valid point.")),
-            );
+            showSnackbar("Failed to get location. Please pick a valid point.");
           }
         },
         child: Icon(Icons.check),
