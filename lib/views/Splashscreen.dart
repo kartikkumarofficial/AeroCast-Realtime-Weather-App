@@ -20,7 +20,7 @@ class _SplashscreenState extends State<Splashscreen> {
   }
 
   void _startTimer() {
-    Timer(Duration(milliseconds: 1500000), () {
+    Timer(Duration(milliseconds: 1500), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomePage()));
     });
@@ -58,7 +58,7 @@ class _SplashscreenState extends State<Splashscreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/splashscreen/weather_thumb.png',
+                      'assets/images/weather_thumb.png',
                       // color: Colors.white,
                       height: srcwidth * 0.5,
                       width: srcwidth * 0.5,
