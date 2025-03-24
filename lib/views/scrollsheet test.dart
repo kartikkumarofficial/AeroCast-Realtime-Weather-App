@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
 class ScrollSheet extends StatefulWidget {
@@ -13,6 +15,10 @@ class ScrollSheet extends StatefulWidget {
 }
 
 class _ScrollSheetState extends State<ScrollSheet> {
+  List<dynamic> hourlyForecast = [];
+
+
+
   @override
   Widget build(BuildContext context) {
     return  DraggableScrollableSheet(
@@ -238,7 +244,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
                                        SizedBox(height: 10),
                                       Row(
                                         children: [
-                                          Text(DateFormat('h:mm a').format(DateTime.now()), style:  TextStyle(color: Colors.white, fontSize: Get.width*0.085)),
+                                          Text(DateFormat('h:mm a').format(DateTime.now()), style:  TextStyle(color: Colors.white, fontSize: Get.width*0.08)),
                                         ],
                                       ),
 
