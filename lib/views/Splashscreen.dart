@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/views/homepage.dart';
 
+import '../models/weather_model.dart';
+import '../services/weather_service.dart';
+
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -13,16 +16,44 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
+  String _city = "Dehradun";
+  final WeatherService _weatherService = WeatherService();
+  WeatherData? weatherInfo;
+  bool _isLoading = false;
+  Map<String, dynamic>? _weatherData;
+  String errorMessage = "";
   double _opacity = 0.0;
+  void fetchweather() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final data = await _weatherService.fetchWeather(_city);
+      setState(() {
+        _weatherData = data;
+        _isLoading = false;
+      });
+    } catch (error) {
+      setState(() {
+        _isLoading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Failed to fetch weather data")),
+      );
+    }
+
+  }
 
   @override
   void initState() {
     super.initState();
+    fetchweather();
     _startTimer();
   }
 
   void _startTimer() {
-    Timer(Duration(milliseconds: 1500000), () {
+    Timer(Duration(milliseconds: 1500), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomePage()));
     });
@@ -50,28 +81,33 @@ class _SplashscreenState extends State<Splashscreen> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),),
-          child: Center(
-            child: AnimatedOpacity(
-              opacity: _opacity,
-              duration: Duration(seconds: 1),
-              child: Padding(
-                padding: EdgeInsets.only(top: srcheight * 0.2),
-                child: Column(
+          child: AnimatedOpacity(
+            opacity: _opacity,
+            duration: Duration(seconds: 1),
+            child: Padding(
+              padding: EdgeInsets.only(top: srcheight * 0.27),
+              child: Column(
 
-                  // mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.asset(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    // height: srcwidth * 0.7,
+                    width: srcwidth * 0.69,
+
+                    // color: Colors.red,
+                    child: Image.asset(
                       'assets/images/weather_thumb.png',
                       // color: Colors.white,
-                      height: srcwidth * 1,
-                      width: srcwidth * 1,
-                    ),
-                    Text('AeroCast',style: GoogleFonts.sanchez(
-                        fontSize: Get.width*0.14,
-                        color: Colors.white),)
 
-                  ],
-                ),
+
+                    ),
+                  ),
+                  SizedBox(height: 40,),
+                  Text('AeroCast',style: GoogleFonts.spectralSc(
+                      fontSize: Get.width*0.14,
+                      color: Colors.white),)
+
+                ],
               ),
             ),
           ),
