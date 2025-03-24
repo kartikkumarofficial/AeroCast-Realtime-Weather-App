@@ -50,7 +50,7 @@ class _SplashscreenState extends State<Splashscreen> {
           ),),
           child: Center(
             child: AnimatedOpacity(
-              opacity: _opacity,
+              opacity: _opacity,  
               duration: Duration(seconds: 1),
               child: Padding(
                 padding: EdgeInsets.only(top: srcheight * 0.35),
@@ -58,7 +58,7 @@ class _SplashscreenState extends State<Splashscreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/weather_thumb.png',
+                      'assets/images/splashscreen/weather_thumb.png',
                       // color: Colors.white,
                       height: srcwidth * 0.5,
                       width: srcwidth * 0.5,
