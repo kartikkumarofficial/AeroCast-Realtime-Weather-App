@@ -23,6 +23,14 @@ class _ScrollSheetState extends State<ScrollSheet> {
   String sunrise = '';
   String sunset = '';
 
+  // static const String _baseUrl = "https://api.weatherapi.com/v1/current.json";
+  // static const String _apiKey = "YOUR_API_KEY"; // Replace securely
+  //
+  // // Fetch weather data for a given city
+  // Future<void> fetchWeather(String city) async {
+  //   final Uri url = Uri.parse("$_baseUrl?key=$_apiKey&q=$city&aqi=no");
+    // https://api.weatherapi.com/v1/current.json?key=b437bfd0cac847dda4785353252503&q=Dehradun&aqi=yes
+
   @override
   void initState() {
     super.initState();
@@ -31,7 +39,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
 
   Future<void> fetchWeatherData() async {
     const String apiKey = "674d0ce02de5536b3a7c0436bc6d9ad2";
-    const String city = "Delhi"; // Change this as needed
+    const String city = "Delhi";
     final String url =
         "https://api.openweathermap.org/data/2.5/forecast?q=$city&units=metric&appid=$apiKey";
 

@@ -16,8 +16,62 @@ class ScrollSheet extends StatefulWidget {
 
 class _ScrollSheetState extends State<ScrollSheet> {
   List<dynamic> hourlyForecast = [];
+  double airQuality = 3; //gotta fetch this from sum other api
+  double uvIndex = 0; //gotta fetch this from sum other api as well
+  double windSpeed = 0;
+  double rainfall = 0;
+  String sunrise = '';
+  String sunset = '';
 
 
+  //function that fetches hourly forcecast , windspeed , rainfall , sunrise , sunset
+  Future<void> fetchWeatherData() async {
+    final String apiKey = "674d0ce02de5536b3a7c0436bc6d9ad2";
+    final String baseUrl = "https://api.openweathermap.org/data/2.5/weather";
+    final String city = "Dehradun";
+    final String url =
+        "https://api.openweathermap.org/data/2.5/forecast?q=$city&units=metric&appid=$apiKey";
+
+    try{
+      final response = await http.get(Uri.parse(url));
+      if (response.statusCode==200){
+        final data = json.decode(response.body);
+        setState(() {
+          hourlyForecast= data['list'].take(7).toList();
+          windSpeed = data['List'][0]['wind']['speed'];
+          rainfall= data['list'][0]['rain']?['1h']?? 0;
+          sunrise = DateFormat('h:mm a').format(
+              DateTime.fromMillisecondsSinceEpoch(
+                  data['city']['sunrise'] * 1000));
+          sunset = DateFormat('h:mm a').format(
+              DateTime.fromMillisecondsSinceEpoch(
+                  data['city']['sunset'] * 1000));
+
+
+
+        });
+      }
+
+      else{
+        print("Failed to fetch weather data in scrollsheet");
+    }
+
+
+    }catch(e){
+    print("Error fetching data: $e");
+
+    }
+
+
+  }
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchWeatherData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,50 +134,62 @@ class _ScrollSheetState extends State<ScrollSheet> {
 
                       // Hourly Forecast List
                       Padding(
-                        padding:  EdgeInsets.only(left: 15.0),
+                        padding: EdgeInsets.only(left: 15.0),
                         child: SizedBox(
                           height: Get.height * 0.15,
-
-                          child: ListView.builder(
-                            itemCount: 6,
+                          child: hourlyForecast.isEmpty
+                              ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                              : ListView.builder(
+                            itemCount: hourlyForecast.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              DateTime now = DateTime.now();
-                              DateTime hourTime = now.add(Duration(hours: index - 1));
-                              String formattedHour = DateFormat.j().format(hourTime);
+                              var forecast = hourlyForecast[index];
+                              String formattedHour = DateFormat.j().format(
+                                  DateTime.fromMillisecondsSinceEpoch(
+                                      forecast['dt'] * 1000));
+                              double temperature =
+                              forecast['main']['temp'];
 
                               return Container(
-                                margin:  EdgeInsets.symmetric(horizontal: 8),
-                                padding:  EdgeInsets.all(10),
+                                margin:
+                                EdgeInsets.symmetric(horizontal: 8),
+                                padding: EdgeInsets.all(10),
                                 width: Get.width * 0.18,
                                 decoration: BoxDecoration(
-
-                                  border: Border.all(color:  Color(0xFF6440b3), width: 0.5),
-                                  gradient:  LinearGradient(
+                                  border: Border.all(
+                                      color: Color(0xFF6440b3), width: 0.5),
+                                  gradient: LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
-                                    colors: [Color.fromRGBO(100, 69, 115, 1.0), Color.fromRGBO(56, 55, 96, 1.0)],
+                                    colors: [
+                                      Color.fromRGBO(100, 69, 115, 1.0),
+                                      Color.fromRGBO(56, 55, 96, 1.0)
+                                    ],
                                   ),
                                   borderRadius: BorderRadius.circular(35),
                                 ),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.center,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          formattedHour,
-                                          style:  TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
-                                        ),
-                                      ],
-                                    ),
-                                     SizedBox(height: 8),
-                                     Icon(Icons.wb_sunny, size: 24, color: Colors.white),
-                                     SizedBox(height: 8),
                                     Text(
-                                      "${20 + index}°C",
-                                      style:  TextStyle(fontSize: 14, color: Colors.white),
+                                      formattedHour,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                    SizedBox(height: 8),
+                                    Icon(Icons.wb_sunny,
+                                        size: 24, color: Colors.white),
+                                    SizedBox(height: 8),
+                                    Text(
+                                      "${temperature.toStringAsFixed(1)}°C",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.white),
                                     ),
                                   ],
                                 ),
@@ -165,7 +231,7 @@ class _ScrollSheetState extends State<ScrollSheet> {
                             Padding(
                               padding:  EdgeInsets.only(left: 18.0),
                               child: Text(
-                                '3-Low Health Risk',
+                                '$airQuality - Low Health Risk',
                                 style: TextStyle(color: Colors.white, fontSize: Get.width*0.06),
                               ),
                             ),

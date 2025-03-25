@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   Map<String, dynamic>? _weatherData;
   String errorMessage = "";
 
-  void _fetchWeather() async {
+  void fetchWeather() async {
     setState(() {
       _isLoading = true;
     });
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _fetchWeather();
+    fetchWeather();
   }
 
   @override
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                           setState(() {
                             city = result['city'];  // Update the city name
                           });
-                          _fetchWeather(); // Fetch weather for the new city
+                          fetchWeather(); // Fetch weather for the new city
                         }
                       },
                       icon: Icon(CupertinoIcons.location_solid, color: Colors.white, size: Get.width * 0.1),
@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> {
 
                         backgroundColor: Colors.white,
                         child: IconButton(
-                            onPressed: (){_fetchWeather();}, icon: Icon(CupertinoIcons.add,color:Colors.deepPurple ,size: Get.width*0.06,)
+                            onPressed: (){fetchWeather();}, icon: Icon(CupertinoIcons.add,color:Colors.deepPurple ,size: Get.width*0.06,)
                         ),
                       ),
                     ),
