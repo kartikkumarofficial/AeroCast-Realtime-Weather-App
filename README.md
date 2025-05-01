@@ -19,7 +19,13 @@ Powered by modern Flutter UI components and seamless map APIs, AeroCast is desig
 
 
 <h1>Outputs</h1>
-<img src="Screenshots/1.jpg" height="500" width="200"><img src="Screenshots/2.jpg" height="500" width="200"><img src="Screenshots/3.jpg" height="500" width="200"><img src="Screenshots/4.jpg" height="500" width="200"><img src="Screenshots/5.jpg" height="500" width="200">
+<div style="display: flex;">
+  <img src="Screenshots/1.jpg" height="500" width="200">
+  <img src="Screenshots/2.jpg" height="500" width="200">
+  <img src="Screenshots/3.jpg" height="500" width="200">
+  <img src="Screenshots/4.jpg" height="500" width="200">
+  <img src="Screenshots/5.jpg" height="500" width="200">
+</div>
 
 
 
