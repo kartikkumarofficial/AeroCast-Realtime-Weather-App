@@ -1,16 +1,28 @@
-# weather_app
+# AeroCast
 
-A new Flutter project.
+🌤️ AeroCast – Your Smart Weather Companion
+AeroCast is a beautifully designed weather app built using Flutter, offering real-time weather updates with intuitive map integration for a truly interactive experience. Whether you're planning your day or tracking weather patterns globally, AeroCast helps you stay informed with:
 
-## Getting Started
+📍 Live Location-Based Forecasts
 
-This project is a starting point for a Flutter application.
+🗺️ Interactive Weather Maps (with temperature, wind, humidity overlays)
 
-A few resources to get you started if this is your first Flutter project:
+🌦️ Hourly & Weekly Forecasts
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🌍 Multi-City Support
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+💡 Clean UI with Smooth Animations
+
+⚠️ Severe Weather Alerts
+
+Powered by modern Flutter UI components and seamless map APIs, AeroCast is designed for clarity, speed, and precision—making it your go-to weather assistant on the go.
+
+
+<h1>Outputs</h1>
+<img src="Screenshots/1.jpg" height="500" width="200">
+<img src="Screenshots/2.jpg" height="500" width="200">
+<img src="Screenshots/3.jpg" height="500" width="200">
+<img src="Screenshots/4.jpg" height="500" width="200">
+<img src="Screenshots/5.jpg" height="500" width="200">
+<img src="Screenshots/6.jpg" height="500" width="200">
+
