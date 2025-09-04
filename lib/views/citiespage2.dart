@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:liquid_glass/liquid_glass.dart';
 
 class OtherCities extends StatefulWidget {
   const OtherCities({super.key});
@@ -45,6 +46,7 @@ class _OtherCitiesState extends State<OtherCities> {
         width: double.infinity,
         child: Column(
           children: [
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(

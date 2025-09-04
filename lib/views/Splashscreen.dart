@@ -16,6 +16,7 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
+
   String _city = "Dehradun";
   final WeatherService _weatherService = WeatherService();
   WeatherData? weatherInfo;
