@@ -13,6 +13,8 @@ AeroCast is a beautifully designed weather app built using Flutter, offering rea
 
 💡 Clean UI with Smooth Animations
 
+
+
 ⚠️ Severe Weather Alerts
 
 Powered by modern Flutter UI components and seamless map APIs, AeroCast is designed for clarity, speed, and precision—making it your go-to weather assistant on the go.
